@@ -120,7 +120,7 @@ public class HomeActivity extends AppCompatActivity implements GoogleApiClient.C
 
         FloatingActionButton sos = (FloatingActionButton) findViewById(R.id.sos);
         final FloatingActionButton marksafe = (FloatingActionButton) findViewById(R.id.marksafe);
-        database.child("users").child(res.get("userid").toString()).addListenerForSingleValueEvent(new ValueEventListener() {
+        database.child("users").child(res.get("userid").toString()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 boolean now = dataSnapshot.child("isSafe").getValue(boolean.class);
@@ -147,7 +147,7 @@ public class HomeActivity extends AppCompatActivity implements GoogleApiClient.C
             DatabaseReference database = FirebaseDatabase.getInstance().getReference();
             @Override
             public void onClick(View view) {
-               database.child("users").child(res.get("userid").toString()).addListenerForSingleValueEvent(new ValueEventListener() {
+               database.child("users").child(res.get("userid").toString()).addValueEventListener(new ValueEventListener() {
                    @Override
                    public void onDataChange(DataSnapshot dataSnapshot) {
                        boolean now = dataSnapshot.child("isSafe").getValue(boolean.class);

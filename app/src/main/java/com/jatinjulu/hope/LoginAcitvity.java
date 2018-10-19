@@ -110,7 +110,7 @@ public class LoginAcitvity extends Activity {
                         // Creating user login session
                         // For testing i am stroing name, email as follow
                         // Use user real data
-                    database.child("users").child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+                    database.child("users").child(userId).addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             if(dataSnapshot.exists())
@@ -173,7 +173,7 @@ public class LoginAcitvity extends Activity {
                 EditText userid = (EditText) findViewById(R.id.userid);
                 String userId = userid.getText().toString();
                 Log.v("database","above database");
-                    database.child("users").child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+                    database.child("users").child(userId).addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             Log.v("database", "below database");
