@@ -3,6 +3,7 @@ package com.jatinjulu.hope;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import com.microsoft.windowsazure.mobileservices.*;
 
 
 public class SplashScreen extends AppCompatActivity {
