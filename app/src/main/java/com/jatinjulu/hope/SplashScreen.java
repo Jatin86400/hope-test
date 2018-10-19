@@ -9,12 +9,16 @@ import com.microsoft.windowsazure.mobileservices.*;
 public class SplashScreen extends AppCompatActivity {
 
     SessionManager session;
+    private MobileServiceClient mClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_splash_screen);
+        mClient = new MobileServiceClient(
+        "https://hope-test2.azurewebsites.net",      
+        this);
 
 
         session = new SessionManager(getApplicationContext());
