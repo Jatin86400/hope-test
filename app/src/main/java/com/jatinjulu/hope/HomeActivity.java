@@ -120,7 +120,7 @@ public class HomeActivity extends AppCompatActivity implements GoogleApiClient.C
 
         FloatingActionButton sos = (FloatingActionButton) findViewById(R.id.sos);
         final FloatingActionButton marksafe = (FloatingActionButton) findViewById(R.id.marksafe);
-        database.child("users").child(res.get("userid").toString()).addValueEventListener(new ValueEventListener() {
+        database.child("users").child(res.get("userid").toString()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 boolean now = dataSnapshot.child("isSafe").getValue(boolean.class);
@@ -147,7 +147,7 @@ public class HomeActivity extends AppCompatActivity implements GoogleApiClient.C
             DatabaseReference database = FirebaseDatabase.getInstance().getReference();
             @Override
             public void onClick(View view) {
-               database.child("users").child(res.get("userid").toString()).addValueEventListener(new ValueEventListener() {
+               database.child("users").child(res.get("userid").toString()).addListenerForSingleValueEvent(new ValueEventListener() {
                    @Override
                    public void onDataChange(DataSnapshot dataSnapshot) {
                        boolean now = dataSnapshot.child("isSafe").getValue(boolean.class);
@@ -253,6 +253,8 @@ public class HomeActivity extends AppCompatActivity implements GoogleApiClient.C
             if(curr_location!=null) {
                 address = getAddress(new LatLng(curr_location.getLatitude(), curr_location.getLongitude()));
             }
+            else
+                address=" ";
             String sms = " ";
             if(address.trim().length()>0) {
                 sms = "Help Me!" + "\n" + "Name: " + res.get(KEY_NAME).toString() + "\n" + "I am at: " + address;
